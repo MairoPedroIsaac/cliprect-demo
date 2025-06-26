@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,159 +14,52 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ClipRectDemo(),
+      home: const ClipRectDemo(),
     );
   }
 }
 
 class ClipRectDemo extends StatelessWidget {
+  const ClipRectDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ClipRect Examples'),
-        backgroundColor: Colors.blue,
+        title: const Text('ClipRect Demo'),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(20),
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Title
-            Text(
-              'ClipRect Widget Demo',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            SizedBox(height: 30),
-            
-            // Example 1: Without ClipRect
-            Text(
-              '❌ WITHOUT ClipRect (Image overflows):',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Container(
-              width: 200,
-              height: 120,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.red, width: 3),
-                color: Colors.red.withOpacity(0.1),
-              ),
+            // First section: Image without ClipRect
+            // This shows the full image without any clipping
+            const Text('Without ClipRect'),
+            const SizedBox(height: 10),
+            SizedBox(
+              height: 100,
+              width: 50,
               child: Image.network(
-                'https://picsum.photos/400/300',
-                fit: BoxFit.none,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: Colors.grey[300],
-                    child: Icon(Icons.image, size: 50, color: Colors.grey),
-                  );
-                },
+                'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                fit: BoxFit.cover,
               ),
             ),
-            
-            SizedBox(height: 30),
-            
-            // Example 2: With ClipRect
-            Text(
-              '✅ WITH ClipRect (Clean and contained):',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Container(
-              width: 200,
-              height: 120,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.green, width: 3),
-                color: Colors.green.withOpacity(0.1),
-              ),
+            const SizedBox(height: 20),
+            // Second section: Image with ClipRect
+            const Text('With ClipRect'),
+            const SizedBox(height: 10),
+            SizedBox(
+              height: 100,
+              width: 50,
               child: ClipRect(
-                child: Image.network(
-                  'https://picsum.photos/400/300',
-                  fit: BoxFit.none,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      color: Colors.grey[300],
-                      child: Icon(Icons.image, size: 50, color: Colors.grey),
-                    );
-                  },
-                ),
-              ),
-            ),
-            
-            SizedBox(height: 30),
-            
-            // Example 3: Text Clipping
-            Text(
-              '📝 Text Clipping Example:',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            
-            // Without ClipRect
-            Text('Without ClipRect:', style: TextStyle(fontSize: 14)),
-            SizedBox(height: 5),
-            Container(
-              width: 150,
-              height: 25,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.orange, width: 2),
-              ),
-              child: Text(
-                'This is a very long text that overflows',
-                style: TextStyle(fontSize: 14),
-              ),
-            ),
-            
-            SizedBox(height: 15),
-            
-            // With ClipRect
-            Text('With ClipRect:', style: TextStyle(fontSize: 14)),
-            SizedBox(height: 5),
-            Container(
-              width: 150,
-              height: 25,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.purple, width: 2),
-              ),
-              child: ClipRect(
-                child: Text(
-                  'This is a very long text that gets clipped',
-                  style: TextStyle(fontSize: 14),
-                ),
-              ),
-            ),
-            
-            SizedBox(height: 30),
-            
-            // Code Example Display
-            Container(
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.grey),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Basic ClipRect Code:',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  heightFactor: 0.5,
+                  child: Image.network(
+                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                    fit: BoxFit.cover,
                   ),
-                  SizedBox(height: 8),
-                  Text(
-                    'ClipRect(\n  child: YourWidget(),\n)',
-                    style: TextStyle(
-                      fontFamily: 'monospace',
-                      fontSize: 12,
-                      color: Colors.blue[800],
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ],
