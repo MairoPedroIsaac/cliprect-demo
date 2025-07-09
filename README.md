@@ -45,10 +45,15 @@ The app displays both scenarios on a single screen:
 1. **child**  
    - The widget to clip (in this case, an `Align` widget containing an image).  
    - Without this, `ClipRect` has no effect.
-   
+
 2. **clipBehavior** *(not explicitly used, defaults to `Clip.hardEdge`)*  
    - This controls how Flutter clips the child — options include `Clip.hardEdge`, `Clip.antiAlias`, etc.  
    - Can be adjusted for smoother visuals or better performance.
+
+3. **Align’s `heightFactor` inside ClipRect**  
+   - Though not a property of `ClipRect`, it's often used with it.  
+   - Controls the vertical space to show from the child widget.  
+   - In this app: `heightFactor: 0.5` clips the image to its top half.  
 
 
 ## Code Structure
