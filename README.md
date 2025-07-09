@@ -38,6 +38,15 @@ The app displays both scenarios on a single screen:
 | Full image content visible | Only the portion within bounds is visible |
 | No boundary enforcement | Strict boundary enforcement |
 
+## Three Key Properties of `ClipRect` Demonstrated
+
+ Here are three attributes relevant to how `ClipRect` works in this app:
+
+1. **child**  
+   - The widget to clip (in this case, an `Align` widget containing an image).  
+   - Without this, `ClipRect` has no effect.
+
+
 ## Code Structure
 
 The app consists of:
